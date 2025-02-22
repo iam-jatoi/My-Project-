@@ -10,7 +10,7 @@ st.write("Embrace Challenges, Learn From Mistakes, And Unlock Your Full Potentia
 
 # Quote Section
 st.header("💡Today's Growth Mindset Quote")
-st.write("Strive For The Moon. Even If You Fail, You Will Land Among The Stars 🌙✨🚀.""- By Jabbar Jatoi")
+st.write("Strive For The Moon. Even If You Fail, You Will Land Among The Stars 🌙✨🚀.""- By Jabbar Jatoi!")
 
 st.header("🛠️ What's Your Challenge Today?")
 user_input = st.text_input("Describe a Challenge You're Facing: ")
