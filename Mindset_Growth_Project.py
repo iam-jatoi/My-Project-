@@ -5,44 +5,44 @@ st.set_page_config(page_title="Growth Mindset Project By Jabbar Jatoi")
 st.title("🌱 Growth Mindset AI Project By Jabbar Jatoi")
 
 st.header("🚀 Welcome to Your Growth Journey!")
-st.write("Embrace challenges, learn from mistakes, and unlock your full potential. This is AI-Powered app helps you build a growth mindset with reflection, challenges and achievments! 🌟")
+st.write("Embrace Challenges, Learn From Mistakes, And Unlock Your Full Potential. This Is AI-Powered App Helps You Build a Growth Mindset With Reflection, Challenges And Achievments! 🌟")
 
 
 # Quote Section
 st.header("💡Today's Growth Mindset Quote")
-st.write("Strive for the Moon. Even if you fail, you will land among the Stars 🌙✨🚀.""- By Jabbar Jatoi")
+st.write("Strive For The Moon. Even If You Fail, You Will Land Among The Stars 🌙✨🚀.""- By Jabbar Jatoi")
 
 st.header("🛠️ What's Your Challenge Today?")
-user_input = st.text_input("Describe a challenge you're facing: ")
+user_input = st.text_input("Describe a Challenge You're Facing: ")
 
 # Condition
 if user_input:
-    st.success(f"😩 You're facing: {user_input}. Keep pushing forward towards your goal! 🎯")
+    st.success(f"😩 You're Facing: {user_input}. Keep Pushing Forward Towards Your Goal! 🎯")
 else:
-    st.warning("Tell us about your challenge to get started!")
+    st.warning("Tell Us About Your Challenge to Get Started!")
 
 # Reflexing# 
-st.header("🧠 Reflect In Your Learning")
-reflection = st.text_area("Write your reflections here: ")
+st.header("🧠 Reflect In Your Learning!")
+reflection = st.text_area("Write Your Reflections Here: ")
 
 if reflection:
-    st.success(f"✨ great Insight! Your reflection {reflection}")
+    st.success(f"✨ Great Insight! Your Reflection {reflection}")
 else:
-    st.info("Reflecting on past experience help you grow! share your difficulties.")
+    st.info("Reflecting On Past Experience Help You Grow! Share Your Difficulties.")
 
 # Achievement
 st.header("🏆 Celebrate Your Wins!")
-acheivment = st.text_input("Share something you've recently accompalished: ")
+acheivment = st.text_input("Share Something You've Recently Accomplished: ")
 
 if acheivment:
-    st.success(f"🎉 Amazing! You acheived: {acheivment}")
+    st.success(f"🎉 Amazing! You Acheived: {acheivment}")
 else:
-    st.info("Big or Small, every acheivment counts! share one now 🤩")
+    st.info("Big or Small, Every Acheivment Counts! Share One Now! 🤩")
 
 
 # Footer
 st.write("- - -")
-st.write("🚀 Keep believing in yourself. Growth is a journey, not a destination! 🌟")
+st.write("🚀 Keep Believing In Yourself. Growth Is a Journey, Not a Destination! 🌟")
 st.write("**⛔ Created By Jabbar Jatoi**") 
 
 
