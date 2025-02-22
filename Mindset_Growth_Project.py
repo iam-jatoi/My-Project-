@@ -2,7 +2,7 @@
 import streamlit as st
 
 st.set_page_config(page_title="Growth Mindset Project By Jabbar Jatoi")
-st.title("Growth Mindset AI Project By Jabbar Jatoi")
+st.title("🌱 Growth Mindset AI Project By Jabbar Jatoi")
 
 st.header("🚀 Welcome to Your Growth Journey!")
 st.write("Embrace challenges, learn from mistakes, and unlock your full potential. This is AI-Powered app helps you build a growth mindset with reflection, challenges and achievments! 🌟")
@@ -28,7 +28,7 @@ reflection = st.text_area("Write your reflections here: ")
 if reflection:
     st.success(f"✨ great Insight! Your reflection {reflection}")
 else:
-    st.info("Reflecting on past experience help you grow! share your difficulties")
+    st.info("Reflecting on past experience help you grow! share your difficulties.")
 
 # Achievement
 st.header("🏆 Celebrate Your Wins!")
