@@ -1,7 +1,7 @@
 # streamlit
 import streamlit as st
 
-st.set_page_config(page_title="Growth Mindset Project By Jabbar Jatoi", project_icon="🖥️")
+st.set_page_config(page_title="Growth Mindset Project By Jabbar Jatoi", project_icon="💿")
 st.title("Growth Mindset AI Project By Jabbar Jatoi")
 
 st.header("🚀 Welcome to Your Growth Journey!")
@@ -17,12 +17,12 @@ user_input = st.text_input("Describe a challenge you're facing: ")
 
 # Condition
 if user_input:
-    st.success(f"You're facing: {user_input}. Keep pushing forward towards your goal! 🎯")
+    st.success(f"😩 You're facing: {user_input}. Keep pushing forward towards your goal! 🎯")
 else:
     st.warning("Tell us about your challenge to get started!")
 
 # Reflexing# 
-st.header("Reflect In Your Learning")
+st.header("🧠 Reflect In Your Learning")
 reflection = st.text_area("Write your reflections here: ")
 
 if reflection:
