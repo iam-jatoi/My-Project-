@@ -31,7 +31,7 @@ if st.button("Convert"):
         st.write("Both units are the same. Please select different units.")
     else:
         converted_value = value * conversion_factors[unit_items1][unit_items2]
-        st.write(f"**Result     >> {value} {unit_items1} = {converted_value} {unit_items2}**")
+        st.success(f"**Result     >> {value} {unit_items1} = {converted_value} {unit_items2}**")
 
 
 
