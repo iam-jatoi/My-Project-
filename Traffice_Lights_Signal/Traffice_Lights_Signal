@@ -1,1 +1,18 @@
+import time
+from enum import Enum
 
+class TrafficLight(Enum):
+    Red = "Please Stop"
+    Yellow = "Get Ready"
+    Green = "Go Now"
+
+def traffic_simulator():
+    while True:
+        for signal in TrafficLight:
+            print(f"🚦 {signal.name} - {signal.value}")
+            time.sleep(2)
+            print("\n ⏳ Waiting For Next Cycle... \n")
+            time.sleep(3)
+
+
+traffic_simulator()
