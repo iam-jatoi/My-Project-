@@ -14,7 +14,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 #Page title and decription
-st.title("🔐 Password Strength Generator By Jabbar Jatoi")
+st.title("🔐 Password Strength Generator")
 st.write("Enter your password below to check its security level. 🔍")
 
 #Function to check password strength
