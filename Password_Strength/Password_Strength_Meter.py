@@ -64,5 +64,5 @@ def check_password_strength(password):
         st.warning("⚠️ Please Enter a Password First!") 
             
 
-st.write("\n\n")
+st.write("\n\n\n")
 st.write("***⛔ Created By Jabbar Jatoi***")
