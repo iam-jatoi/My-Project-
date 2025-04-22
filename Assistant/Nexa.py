@@ -1,61 +1,80 @@
 import streamlit as st
-import pyttsx3
+from streamlit_webrtc import webrtc_streamer, AudioProcessorBase
 import speech_recognition as sr
+from gtts import gTTS
+import os
+import tempfile
 import webbrowser
 import requests
+import json
 
-# Initialize text-to-speech engine
-engine = pyttsx3.init()
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)  # 0 = Male, 1 = Female
+# Set up Streamlit page
+st.set_page_config(page_title="Nexa - Voice Assistant", page_icon="🎤", layout="centered")
+st.title("🎙️ Nexa - Your Female Voice Assistant")
 
+# Replace with your OpenWeatherMap API Key
+WEATHER_API_KEY = "YOUR_OPENWEATHER_API_KEY"
+CITY_NAME = "Karachi"  # You can make this dynamic later
+
+# Function to speak response using gTTS
 def speak(text):
-    engine.say(text)
-    engine.runAndWait()
+    tts = gTTS(text=text, lang='en')
+    with tempfile.NamedTemporaryFile(delete=True, suffix=".mp3") as fp:
+        tts.save(fp.name)
+        st.audio(fp.name, format='audio/mp3', autoplay=True)
 
-def listen():
+# Function to fetch weather
+def get_weather():
+    try:
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={CITY_NAME}&appid={WEATHER_API_KEY}&units=metric"
+        response = requests.get(url)
+        data = response.json()
+        if data["cod"] == 200:
+            temp = data["main"]["temp"]
+            desc = data["weather"][0]["description"]
+            return f"The current temperature in {CITY_NAME} is {temp}°C with {desc}."
+        else:
+            return "Sorry, I couldn't fetch the weather."
+    except:
+        return "There was an error retrieving the weather."
+
+# Recognize command from mic input
+def recognize_speech():
     recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        st.info("🎙️ Listening for your command...")
+    mic = sr.Microphone()
+
+    with mic as source:
+        st.info("🎧 Listening...")
+        recognizer.adjust_for_ambient_noise(source)
         audio = recognizer.listen(source)
-        try:
-            command = recognizer.recognize_google(audio)
-            st.success(f"✅ You said: {command}")
-            return command.lower()
-        except sr.UnknownValueError:
-            st.error("😕 Sorry, I could not understand.")
-        except sr.RequestError:
-            st.error("⚠️ Could not request results from speech service.")
+
+    try:
+        command = recognizer.recognize_google(audio)
+        st.success(f"🗣️ You said: {command}")
+        return command.lower()
+    except sr.UnknownValueError:
+        st.error("❌ Could not understand audio")
+    except sr.RequestError:
+        st.error("❌ Could not request results")
     return ""
 
-def get_weather():
-    city = "your_city_here"  # e.g., "Karachi"
-    api_key = "your_openweather_api_key"
-    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
-    response = requests.get(url).json()
-    if response["cod"] == 200:
-        temp = response["main"]["temp"]
-        description = response["weather"][0]["description"]
-        result = f"Current temperature in {city} is {temp}°C with {description}."
-        st.info(result)
-        speak(result)
-    else:
-        st.error("Couldn't fetch weather data.")
-
-# Streamlit UI
-st.title("🔊 Nexa - Your Voice Assistant (Beta)")
-st.write("Press the button and speak a command like 'open google' or 'tell me the weather'.")
-
-if st.button("🎤 Activate Nexa"):
-    command = listen()
-
+# Handle command
+def handle_command(command):
     if "open google" in command:
         speak("Opening Google")
         webbrowser.open("https://www.google.com")
-
     elif "weather" in command:
-        speak("Fetching the weather")
-        get_weather()
-
+        weather = get_weather()
+        st.write(weather)
+        speak(weather)
     else:
-        speak("Sorry, I can't do that yet.")
+        speak("Sorry, I didn't understand the command.")
+
+# Streamlit interaction
+if st.button("🎤 Talk to Nexa"):
+    cmd = recognize_speech()
+    if cmd:
+        handle_command(cmd)
+
+st.write("---")
+st.markdown("Made with ❤️ by Jabbar Jatoi")
